@@ -1,4 +1,4 @@
-﻿using FluentEmail.Core;
+using FluentEmail.Core;
 using FluentEmail.Core.Models;
 using FluentEmail.Razor;
 using FluentEmail.Smtp;
@@ -6,15 +6,11 @@ using Microsoft.Extensions.Configuration;
 using SendGridFluentEmailSender;
 using System.Net.Mail;
 
-
-string emailServer = "<SMTP Server, by default: localhost>";
-int emailPort = <SMTP port>;
-
-SmtpClient smtpClient = new SmtpClient(emailServer, emailPort);
-
+string emailServer = "localhost";
+int emailPort = 25;
+using SmtpClient smtpClient = new SmtpClient(emailServer, emailPort);
 Email.DefaultRenderer = new RazorRenderer();
 Email.DefaultSender = new SmtpSender(smtpClient);
-
 
 IFluentEmail firstEmail = Email
     .From("<sender email address>")
